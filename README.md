@@ -10,35 +10,45 @@ Property managers handle thousands of lease renewals every cycle. Done manually,
 
 ## Architecture
 
+```
 PDF Lease / Rental Application
-        ↓
-Document Ingestion Agent
-        ↓
-Resident Profile Agent
-        ↓
-Renewal Decision Agent  ←→  Market Lookup Tool
-        ↓
-Compliance Agent (RAG over Fair Housing Rules)
-        ↓
-   ┌────┼────────┐
-   ↓    ↓        ↓
-Approved  Escalate   Vetoed
-   ↓        ↓        ↓
-Communication  Human Review   Blocked
+            ↓
+    Document Ingestion Agent
+            ↓
+    Resident Profile Agent
+            ↓
+    Renewal Decision Agent  ←→  Market Lookup Tool
+            ↓
+    Compliance Agent (RAG over Fair Housing Rules)
+            ↓
+    ┌───────┼────────┐
+    ↓       ↓        ↓
+Approved Escalate  Vetoed
+    ↓       ↓        ↓
+Communication  Human Review  Blocked
    Agent         Queue
-   ↓
+    ↓
 Drafted Email
+```
 
 The workflow is implemented as a multi-agent system orchestrated with LangChain. Each agent has a focused responsibility, allowing the system to scale and remain auditable.
+
+## Agents
+
+- **Document Ingestion Agent** — accepts unstructured PDFs (rental applications, leases), extracts text with `pypdf`, and uses an LLM to convert it into structured resident data. Low-confidence extractions route to human review.
+- **Resident Profile Agent** — converts raw resident data into a structured profile with tenure category, payment reliability, and risk signals. Never infers protected characteristics.
+- **Renewal Decision Agent** — recommends a renewal strategy (standard renewal, retention discount, premium offer, do-not-renew). Has access to two tools it can invoke at runtime: a market intelligence lookup and a live external API for geographic context.
+- **Compliance Agent** — performs RAG over a fair housing policy knowledge base (FAISS + HuggingFace embeddings) and has three possible verdicts: approved, escalate to human, or vetoed. Has veto authority over the entire pipeline.
+- **Communication Agent** — drafts a personalized renewal email or text in the resident's preferred channel, with tone matched to the renewal type.
 
 ## Tech stack
 
 - **LangChain** — agent orchestration, prompt management, and tool binding
-- **Groq** running **Llama 3.3 70B** — fast, low-cost, open-source frontier model for inference
+- **Groq + Llama 3.3 70B** — fast, low-cost, open-source frontier inference
 - **FAISS** — vector database for the Compliance Agent's RAG layer
-- **HuggingFace Embeddings** (`sentence-transformers/all-MiniLM-L6-v2`) — local embedding model, no external API
+- **HuggingFace Embeddings** (`sentence-transformers/all-MiniLM-L6-v2`) — local embedding model
 - **Pydantic** — structured outputs and validation at every agent
-- **pypdf** — PDF text extraction for unstructured document ingestion
+- **pypdf** — PDF text extraction
 - **Streamlit** — demo UI with file upload, agent reasoning trace, and human-review queue
 - **Docker** — containerized deployment
 
@@ -46,15 +56,16 @@ The workflow is implemented as a multi-agent system orchestrated with LangChain.
 
 - Multi-agent orchestration with five specialized agents
 - Multi-step reasoning across the agent pipeline
-- Tool-calling — the Decision Agent dynamically invokes a market data tool
+- Tool-calling — the Decision Agent dynamically invokes a market data tool and a live external API
 - RAG architecture with vector embeddings
 - Structured outputs with Pydantic at every step
-- Prompt engineering with role-specific system prompts
 - Guardrails — compliance veto, confidence thresholds, human escalation
 - Production thinking — audit trail, exception handling, regulated-industry safety patterns
 - Containerized deployment ready for cloud platforms
 
 ## Project structure
+
+```
 lease-renewal-agents/
 ├── agents/
 │   ├── document_ingestion_agent.py
@@ -77,6 +88,7 @@ lease-renewal-agents/
 ├── .dockerignore
 ├── requirements.txt
 └── README.md
+```
 
 ## Setup
 
@@ -86,6 +98,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 echo "GROQ_API_KEY=your_groq_key" > .env
 ```
+
+Get a free Groq API key at https://console.groq.com/keys
 
 ## Run
 
