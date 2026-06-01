@@ -1,0 +1,98 @@
+{
+  "residents": [
+    {
+      "resident_id": "R001",
+      "name": "Sarah Johnson",
+      "unit": "4B",
+      "property": "Maple Ridge Apartments",
+      "zipcode": "75080",
+      "current_rent": 1800,
+      "lease_start": "2024-06-01",
+      "lease_end": "2025-05-31",
+      "payment_history": {
+        "on_time_payments": 11,
+        "late_payments": 1,
+        "missed_payments": 0
+      },
+      "maintenance_tickets": 2,
+      "communication_preference": "email",
+      "tenure_months": 12,
+      "market_rate_for_unit": 1950
+    },
+    {
+      "resident_id": "R002",
+      "name": "Michael Chen",
+      "unit": "2A",
+      "property": "Maple Ridge Apartments",
+      "zipcode": "75080",
+      "current_rent": 1650,
+      "lease_start": "2023-08-01",
+      "lease_end": "2025-07-31",
+      "payment_history": {
+        "on_time_payments": 22,
+        "late_payments": 2,
+        "missed_payments": 0
+      },
+      "maintenance_tickets": 1,
+      "communication_preference": "text",
+      "tenure_months": 24,
+      "market_rate_for_unit": 1800
+    },
+    {
+      "resident_id": "R003",
+      "name": "Priya Patel",
+      "unit": "7C",
+      "property": "Oak Hill Residences",
+      "current_rent": 2100,
+      "lease_start": "2024-09-01",
+      "lease_end": "2025-08-31",
+      "payment_history": {
+        "on_time_payments": 8,
+        "late_payments": 0,
+        "missed_payments": 0
+      },
+      "maintenance_tickets": 0,
+      "communication_preference": "email",
+      "tenure_months": 9,
+      "market_rate_for_unit": 2050
+    },
+    {
+      "resident_id": "R004",
+      "name": "James Williams",
+      "unit": "1D",
+      "property": "Oak Hill Residences",
+      "zipcode": "44241",
+      "current_rent": 1500,
+      "lease_start": "2024-01-01",
+      "lease_end": "2025-12-31",
+      "payment_history": {
+        "on_time_payments": 14,
+        "late_payments": 4,
+        "missed_payments": 2
+      },
+      "maintenance_tickets": 5,
+      "communication_preference": "email",
+      "tenure_months": 17,
+      "market_rate_for_unit": 1700
+    },
+    {
+      "resident_id": "R005",
+      "name": "Emma Rodriguez",
+      "unit": "3F",
+      "property": "Maple Ridge Apartments",
+      "zipcode": "75080",
+      "current_rent": 1750,
+      "lease_start": "2022-05-01",
+      "lease_end": "2025-04-30",
+      "payment_history": {
+        "on_time_payments": 35,
+        "late_payments": 1,
+        "missed_payments": 0
+      },
+      "maintenance_tickets": 3,
+      "communication_preference": "text",
+      "tenure_months": 36,
+      "market_rate_for_unit": 1900
+    }
+  ]
+}

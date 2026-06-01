@@ -1,0 +1,30 @@
+FAIR HOUSING AND RENEWAL POLICY GUIDELINES
+
+1. PROTECTED CLASSES
+Under the Fair Housing Act, renewal decisions and pricing must not be based on or correlated with: race, color, national origin, religion, sex, familial status, or disability. State and local laws may add protections such as source of income, sexual orientation, gender identity, age, and marital status.
+
+2. CONSISTENT TREATMENT
+All residents in similar circumstances must be evaluated using the same criteria. Rent increases, renewal offers, and non-renewals must be based on objective factors such as payment history, lease compliance, market rate, and property-level pricing strategy.
+
+3. RENT INCREASE LIMITS
+Any rent increase greater than 10% must be flagged for human review. Increases above 15% require documented justification tied to market rate and property performance, not individual resident characteristics.
+
+4. NON-RENEWAL CRITERIA
+A non-renewal recommendation is permitted only when supported by documented, objective reasons: repeated missed payments (2 or more in the lease term), serious lease violations, or property-wide strategic decisions. Non-renewals must always be escalated to human review before any communication is sent.
+
+5. RETENTION DISCOUNTS
+Retention discounts may be offered to long-tenured residents (24+ months) with strong payment history. Discount eligibility must follow consistent criteria, not subjective judgment about individual residents.
+
+6. AUDIT TRAIL REQUIREMENT
+Every renewal decision must include a documented reasoning trace: the inputs considered, the rules applied, and the final recommendation. All AI-generated decisions must be reviewable by a human and stored for compliance audit.
+
+7. HUMAN-IN-THE-LOOP TRIGGERS
+The following decisions must be escalated to human review before action:
+- Any non-renewal recommendation
+- Rent increases above 10%
+- Residents with active maintenance disputes
+- Residents with fewer than 6 months of payment history
+- Any case where the Compliance Agent flags potential fair housing risk
+
+8. COMMUNICATION STANDARDS
+Renewal communications must be respectful, clear, and consistent in tone regardless of resident characteristics. All communications must include the resident's right to discuss the terms with management.
