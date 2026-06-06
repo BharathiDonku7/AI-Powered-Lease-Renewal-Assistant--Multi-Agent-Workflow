@@ -65,16 +65,20 @@ def process_renewal(resident: dict) -> dict:
     review_dict = review.model_dump()
     trace["steps"].append({"agent": "ComplianceAgent", "output": review_dict})
 
-    if review.verdict in ("approved", "escalate_to_human"):
+    if review.verdict == "approved":
         comm = draft_communication(resident, profile_dict, decision_dict)
         comm_dict = comm.model_dump()
         trace["steps"].append({"agent": "CommunicationAgent", "output": comm_dict})
+    elif review.verdict == "escalate_to_human":
+        trace["steps"].append({
+        "agent": "CommunicationAgent",
+        "output": {"status": "skipped", "reason": "pending human review — message not drafted"}
+    })
     else:
         trace["steps"].append({
-            "agent": "CommunicationAgent",
-            "output": {"status": "skipped", "reason": "blocked by compliance"}
-        })
-
+        "agent": "CommunicationAgent",
+        "output": {"status": "skipped", "reason": "blocked by compliance veto"}
+    })
     if review.verdict == "approved":
         final_status = "auto_approved_and_sent"
     elif review.verdict == "escalate_to_human":
